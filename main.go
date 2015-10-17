@@ -4,13 +4,14 @@ package main
 import (
     "flag"
     "github.com/shaybix/sawig/bootstrap"
+    "github.com/julienschmidt/httprouter"
+    "github.com/shaybix/sawig/controller"
     "net/http"
     "fmt"
     // "io/ioutil"
 )
 
 var app     = &bootstrap.Application{}
-var route   = &bootstrap.Route{}
 
 func init() {
 
@@ -18,7 +19,6 @@ func init() {
 
     flag.Parse()
     app.Init(filename)
-    route.Init()
     // app.LoadTemplates()
 
 }
@@ -32,23 +32,9 @@ func init() {
 
 func main() {
 
-    // http.HandleFunc("/", IndexHandler)
-    // fs := http.FileServer(http.Dir("views"))
-    // http.Handle("/", fs)
 
-    // templates := app.LoadTemplates()
-
-
-    //
-    // route.Register("/", "index.html", )
-    // route.Register("about", "about.html")
-    //
-    // for _, each := range route.All() {
-    //
-    // }
-
-
-    route.Get("/", IndexController)
+    router := httprouter.New()
+    router.GET("/", controller.HomePage)
 
 
     // Print on console the server is running and listen for connection

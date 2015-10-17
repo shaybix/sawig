@@ -3,8 +3,8 @@
 #### TODO Tasks (Functionalities)
 
 - [x] HTTP Server
-- [ ] HTTP Server that accepts incoming traffic
-- [ ] Read from a json configuration file and parse settings
+- [x] HTTP Server that accepts incoming traffic
+- [x] Read from a json configuration file and parse settings
+- [ ] Router handling incoming requests handling it over to a controller
 - [ ] Serve HTML Files in Views folder
-
 - [ ] Connect to the Database
