@@ -1,12 +1,9 @@
 package bootstrap
 
-
 import (
-    "encoding/json"
-    "io/ioutil"
-
+	"encoding/json"
+	"io/ioutil"
 )
-
 
 // type DatabaseConfiguration struct {
 //
@@ -15,16 +12,13 @@ import (
 //
 // }
 
-
 type Configuration struct {
-
-    Secret          string  `json:"secret"`
-    PublicPath      string  `json:"public_path"`
-    TemplatePath    string  `json:"template_path"`
-    // Database        *DatabaseConfiguration
+	Secret       string `json:"secret"`
+	PublicPath   string `json:"public_path"`
+	TemplatePath string `json:"template_path"`
+	// Database        *DatabaseConfiguration
 
 }
-
 
 func (configuration *Configuration) Load(filename string) (err error) {
 	data, err := ioutil.ReadFile(filename)

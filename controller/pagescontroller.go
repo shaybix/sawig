@@ -1,18 +1,12 @@
 package controller
 
-
 import (
-    "github.com/julienschmidt/httprouter"
-    "fmt"
-    "net/http"
+	"fmt"
+	"github.com/julienschmidt/httprouter"
+	"net/http"
 )
-
-
-
-
-
 
 func HomePage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
-    fmt.Fprint(res, "Hit The HomePage")
+	fmt.Fprint(res, templates)
 }
