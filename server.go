@@ -3,11 +3,14 @@ package main
 
 import (
     "flag"
-    "github.com/shaybix/sawig/bootstrap"
-    "github.com/julienschmidt/httprouter"
-    "github.com/shaybix/sawig/controller"
     "net/http"
     "fmt"
+
+    "github.com/julienschmidt/httprouter"
+
+    "github.com/shaybix/sawig/bootstrap"
+    "github.com/shaybix/sawig/controller"
+
     // "io/ioutil"
 )
 
@@ -39,7 +42,7 @@ func main() {
 
     // Print on console the server is running and listen for connection
     fmt.Println("Running Server at http://localhost:8000")
-    http.ListenAndServe(":8000", nil)
+    http.ListenAndServe(":8000", router)
 
 
 
