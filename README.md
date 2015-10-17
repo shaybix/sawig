@@ -4,5 +4,7 @@
 
 - [x] HTTP Server
 - [ ] HTTP Server that accepts incoming traffic
-- [ ] Serve Files in Views folder
+- [ ] Read from a json configuration file and parse settings
+- [ ] Serve HTML Files in Views folder
+
 - [ ] Connect to the Database

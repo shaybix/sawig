@@ -1,0 +1,6 @@
+{
+	"secret": "secret",
+	"public_path": "public",
+	"template_path": "views"
+
+}
