@@ -52,7 +52,7 @@ func (application *Application) LoadTemplates() []string {
 }
 
 
-//
+
 // func (application *Application) LoadControllers(templates []string) {
 //
 // 	application.Controller = &Controller{}
