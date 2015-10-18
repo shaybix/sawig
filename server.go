@@ -3,11 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
 
-	"github.com/ttacon/chalk"
 	"github.com/julienschmidt/httprouter"
+	"github.com/ttacon/chalk"
 
 	"github.com/shaybix/sawig/bootstrap"
 	"github.com/shaybix/sawig/controller"
@@ -15,7 +15,6 @@ import (
 
 var app = &bootstrap.Application{}
 var ctrl = &controller.Controller{}
-
 
 func init() {
 
@@ -30,28 +29,21 @@ func init() {
 
 }
 
-
-
-
 func main() {
-
 	// instantiate the router
 	router := httprouter.New()
-
 
 	// The application's routes
 	router.GET("/", ctrl.Index)
 	// router.GET("/about", controller.About)
 
-
 	// Print on console the server is running and listen for connection
 	fmt.Println("\nRunning Server at", chalk.Green, "http://localhost:8000", chalk.ResetColor)
 
-	if err := http.ListenAndServe(":8000", router) ; err != nil {
+	err := http.ListenAndServe(":8000", router)
+	if err != nil {
 		log.Fatalln(chalk.Red, err)
 
 	}
-
-
 
 }

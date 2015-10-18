@@ -1,20 +1,17 @@
 package bootstrap
 
 import (
-
 	"io/ioutil"
 	"log"
 )
 
-
+// Application ...
 type Application struct {
-
 	Configuration *Configuration
-	Controller *Controller
+	Controller    *Controller
 }
 
-
-// Loading the config file
+// Init Loading - the config file
 func (application *Application) Init(filename *string) {
 
 	// instantiate the configuration
@@ -27,9 +24,7 @@ func (application *Application) Init(filename *string) {
 
 }
 
-
-
-// Loading the templates int he ./Views folder and returning
+// LoadTemplates - Loading the templates int he ./Views folder and returning
 // a slice of the file name.
 //
 // Perhaps should return a map of route path as key
@@ -38,7 +33,6 @@ func (application *Application) LoadTemplates() []string {
 
 	// Read the template directory specified in Application.Configuration{}
 	files, _ := ioutil.ReadDir(application.Configuration.TemplatePath)
-
 
 	// Instantiate the templates slice which will hold all the template filenames
 	var templates []string
@@ -50,8 +44,6 @@ func (application *Application) LoadTemplates() []string {
 	return templates
 
 }
-
-
 
 // func (application *Application) LoadControllers(templates []string) {
 //
