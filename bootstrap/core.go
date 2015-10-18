@@ -14,7 +14,7 @@ type Application struct {
 }
 
 
-
+// Loading the config file
 func (application *Application) Init(filename *string) {
 
 	// instantiate the configuration
@@ -29,6 +29,11 @@ func (application *Application) Init(filename *string) {
 
 
 
+// Loading the templates int he ./Views folder and returning
+// a slice of the file name.
+//
+// Perhaps should return a map of route path as key
+// and template value.
 func (application *Application) LoadTemplates() []string {
 
 	// Read the template directory specified in Application.Configuration{}
@@ -47,10 +52,11 @@ func (application *Application) LoadTemplates() []string {
 }
 
 
-func (application *Application) LoadControllers(templates []string) {
-
-	application.Controller = &Controller{}
-
-	//application.Controller.GetTemplates(templates)
-
-}
+//
+// func (application *Application) LoadControllers(templates []string) {
+//
+// 	application.Controller = &Controller{}
+//
+// 	// application.Controller.GetTemplates(templates)
+//
+// }

@@ -13,18 +13,19 @@ import (
 
 func Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
+
+	// Initialise a new template, and parse the files
 	t := template.New("index.html")
 	t, _ = t.ParseFiles("./views/index.html")
+
+	// Takes as argument a writer and an interfacee of 'data' to be passed
 	err := t.Execute(res, nil)
 
+	// Process any errors
 	if err != nil {
 		log.Fatalln(err)
 		panic(err)
 	}
-	// Initialise a new template, and then execute the template
-	// t := template.New()
-	//
-	// Takes as argument a writer and an interfacee of 'data'
-	// t.Execute()
+
 
 }
