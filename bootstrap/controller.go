@@ -8,7 +8,10 @@ import (
 )
 
 
-type Controller struct {}
+type Controller struct {
+
+    Templates []string
+}
 
 
 

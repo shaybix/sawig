@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"log"
 
+	"github.com/ttacon/chalk"
 	"github.com/julienschmidt/httprouter"
 
 	"github.com/shaybix/sawig/bootstrap"
@@ -13,6 +14,7 @@ import (
 )
 
 var app = &bootstrap.Application{}
+var ctrl = &controller.Controller{}
 
 
 func init() {
@@ -38,16 +40,18 @@ func main() {
 
 
 	// The application's routes
-	router.GET("/", controller.Index)
-
+	router.GET("/", ctrl.Index)
+	// router.GET("/about", controller.About)
 
 
 	// Print on console the server is running and listen for connection
-	fmt.Println("Running Server at http://localhost:8000")
+	fmt.Println("\nRunning Server at", chalk.Green, "http://localhost:8000", chalk.ResetColor)
+
 	if err := http.ListenAndServe(":8000", router) ; err != nil {
-		log.Fatalln(err)
-		panic(err)
+		log.Fatalln(chalk.Red, err)
+
 	}
+
 
 
 }
