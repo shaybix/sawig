@@ -12,3 +12,5 @@
 - [ ] Pass on data to the Templates
 - [ ] Load templates dynamically
 - [ ] Connect to the Database
+- [ ] Load Models
+- [ ] 
