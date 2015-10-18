@@ -9,16 +9,17 @@ import (
 
 	"github.com/shaybix/sawig/bootstrap"
 	"github.com/shaybix/sawig/controller"
-
-	// "io/ioutil"
 )
 
 var app = &bootstrap.Application{}
 
+
 func init() {
 
+	// Load the config.json file
 	filename := flag.String("config", "config.json", "Path to configuration file")
 
+	// Parse the arguments
 	flag.Parse()
 
 	// initialising the config.json
@@ -29,8 +30,12 @@ func init() {
 
 func main() {
 
+	// instantiate the router
 	router := httprouter.New()
-	router.GET("/", controller.HomePage)
+
+
+	// The application's routes
+	router.GET("/", controller.Index)
 
 
 

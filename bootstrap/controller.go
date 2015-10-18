@@ -1,17 +1,24 @@
 package bootstrap
 
 
+import (
 
-type Controller struct {
-
-
-
-}
-
+    // "html/template"
+    "fmt"
+)
 
 
+type Controller struct {}
 
-func (controller *Controller) Init(templates []string) {
 
-    templates
+
+
+func (controller *Controller) GetTemplate(templates []string) {
+
+    app := &Application{}
+
+
+    var lists []string
+    lists = app.LoadTemplates()
+    fmt.Println(lists)
 }
