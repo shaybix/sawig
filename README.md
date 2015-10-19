@@ -34,13 +34,14 @@ into a map of some kind, and using convention map a url path to a template.
 
 ``` go
 
-func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+func (p *Page) Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 tpl := new(Templates)
 tpl.FileName = "index.html"
 tpl.FilePath = "./views/index.html"
-tpl.ServeView(res, tpl)
+tpl.ServeView(w , tpl)
 
+}
 
 ```
 
