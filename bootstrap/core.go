@@ -45,10 +45,12 @@ func (application *Application) LoadTemplates() []string {
 
 }
 
-// func (application *Application) LoadControllers(templates []string) {
-//
-// 	application.Controller = &Controller{}
-//
-// 	// application.Controller.GetTemplates(templates)
-//
-// }
+// LoadControllers - Prepares and passes on the templates on to the Controller
+// struct, which then makes it available for other methods of the Controller.
+func (application *Application) LoadControllers(templates []string) {
+
+	application.Controller = &Controller{}
+
+	// application.Controller.GetTemplates(templates)
+
+}
