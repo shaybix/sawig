@@ -3,19 +3,26 @@ package controller
 import (
 	// "fmt"
 	"github.com/julienschmidt/httprouter"
-	"net/http"
 	"html/template"
 	"log"
-
+	"net/http"
 )
 
+// Page ...
+type Page struct{}
 
-type Page struct {}
+// Consider exporting this code below to another function, and simply
+// execute serve the template, like this:
+//
+// ServeView("file.html")
+//
+//
+// TODO: refactor all of this code
+//
+//
 
-
-
+// Index ...
 func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-
 
 	// Initialise a new template, and parse the files
 	t := template.New("index.html")
@@ -30,11 +37,10 @@ func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Pa
 		panic(err)
 	}
 
+}
 
-}	
-
-func About(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-
+// About ...
+func (p *Page) About(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 	// Initialise a new template, and parse the files
 	t := template.New("about.html")
@@ -48,6 +54,5 @@ func About(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 		log.Fatalln(err)
 		panic(err)
 	}
-
 
 }

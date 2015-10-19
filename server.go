@@ -35,7 +35,7 @@ func main() {
 
 	// The application's routes
 	router.GET("/", ctrl.Index)
-	// router.GET("/about", controller.About)
+	router.GET("/about", ctrl.About)
 
 	// Print on console the server is running and listen for connection
 	fmt.Println("\nRunning Server at", chalk.Green, "http://localhost:8000", chalk.ResetColor)
