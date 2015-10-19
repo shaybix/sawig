@@ -30,6 +30,7 @@ func init() {
 }
 
 func main() {
+
 	// instantiate the router
 	router := httprouter.New()
 
