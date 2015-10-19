@@ -27,3 +27,40 @@ This application is an excercise allowing me to learn and explore the language c
 
 
 ======================================================================
+
+TODO: Currently the views get served from the controller in this fashion. However
+ideally we want to be able to load all of the templates, and their file paths
+into a map of some kind, and using convention map a url path to a template.
+
+``` go
+
+func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+
+tpl := new(Templates)
+tpl.FileName = "index.html"
+tpl.FilePath = "./views/index.html"
+tpl.ServeView(res, tpl)
+
+
+```
+
+After many trial error of writing up my own router, I finally gave up and decided
+to settle with julienschmidt's httprouter, and it works just fine for me now.
+I call it in this fashion.
+
+
+``` go
+
+var ctrl = &controller.Controller{}
+
+func main() {
+
+    // instantiate the router
+    router := httprouter.New()
+
+    // The application's routes
+    router.GET("/", ctrl.Index)
+
+}
+
+```

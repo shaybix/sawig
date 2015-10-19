@@ -35,10 +35,10 @@ func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Pa
 	// 	panic(err)
 	// }
 
-	t := new(Templates)
-	t.FileName = "index.html"
-	t.FilePath = "./views/index.html"
-	t.ServeView(res, t)
+	tpl := new(Templates)
+	tpl.FileName = "index.html"
+	tpl.FilePath = "./views/index.html"
+	tpl.ServeView(res, tpl)
 
 }
 
