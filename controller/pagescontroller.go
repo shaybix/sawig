@@ -1,13 +1,18 @@
 package controller
 
 import (
-	// "fmt"
 	"github.com/julienschmidt/httprouter"
+	"github.com/shaybix/sawig/helpers"
+	"github.com/ttacon/chalk"
+
+	"fmt"
 	"net/http"
 )
 
 // Page ...
-type Page struct{}
+type Page struct {
+	Templates *helpers.Templates
+}
 
 // Consider exporting this code below to another function, and simply
 // execute to serve the template, like this:
@@ -22,6 +27,8 @@ type Page struct{}
 // Index ...
 func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
+	// fmt.Println(chalk.Yellow, req.URL.Path, chalk.ResetColor)
+
 	// // Initialise a new template, and parse the files
 	// t := template.New("index.html")
 	// t, _ = t.ParseFiles("./views/index.html")
@@ -35,15 +42,15 @@ func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Pa
 	// 	panic(err)
 	// }
 
-	tpl := new(Templates)
-	tpl.FileName = "index.html"
-	tpl.FilePath = "./views/index.html"
-	tpl.ServeView(res, tpl)
+	tpl := p.Templates.LoadTemplates(req)
+	p.Templates.ServeView(res, tpl)
 
 }
 
 // About ...
 func (p *Page) About(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+
+	fmt.Println(chalk.Yellow, req.URL.Path, chalk.ResetColor)
 
 	// // Initialise a new template, and parse the files
 	// t := template.New("about.html")
@@ -58,9 +65,15 @@ func (p *Page) About(res http.ResponseWriter, req *http.Request, _ httprouter.Pa
 	// 	panic(err)
 	// }
 
-	t := new(Templates)
-	t.FileName = "about.html"
-	t.FilePath = "./views/about.html"
-	t.ServeView(res, t)
+	tpl := p.Templates.LoadTemplates(req)
+	p.Templates.ServeView(res, tpl)
+
+}
+
+// Contact ...
+func (p *Page) Contact(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+
+	tpl := p.Templates.LoadTemplates(req)
+	p.Templates.ServeView(res, tpl)
 
 }
