@@ -37,10 +37,8 @@ into a map of some kind, and using convention map a url path to a template.
 func (p *Page) Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 
-tpl := new(Templates)
-tpl.FileName = "index.html"
-tpl.FilePath = "./views/index.html"
-tpl.ServeView(w , tpl)
+tpl := p.Templates.LoadTemplates(req)
+p.Templates.ServeView(res, tpl)
 
 }
 
