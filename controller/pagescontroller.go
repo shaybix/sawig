@@ -2,16 +2,16 @@ package controller
 
 import (
 	"github.com/julienschmidt/httprouter"
-	"github.com/shaybix/sawig/helpers"
+	"github.com/shaybix/sawig/bootstrap"
 	"github.com/ttacon/chalk"
 
 	"fmt"
 	"net/http"
 )
 
-// Page ...
-type Page struct {
-	Templates *helpers.Templates
+// Pages ...
+type Pages struct {
+	Templates *bootstrap.Templates
 }
 
 // Consider exporting this code below to another function, and simply
@@ -25,7 +25,7 @@ type Page struct {
 //
 
 // Index ...
-func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+func (p *Pages) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 	// fmt.Println(chalk.Yellow, req.URL.Path, chalk.ResetColor)
 
@@ -48,7 +48,7 @@ func (p *Page) Index(res http.ResponseWriter, req *http.Request, _ httprouter.Pa
 }
 
 // About ...
-func (p *Page) About(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+func (p *Pages) About(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 	fmt.Println(chalk.Yellow, req.URL.Path, chalk.ResetColor)
 
@@ -71,7 +71,7 @@ func (p *Page) About(res http.ResponseWriter, req *http.Request, _ httprouter.Pa
 }
 
 // Contact ...
-func (p *Page) Contact(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+func (p *Pages) Contact(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 	tpl := p.Templates.LoadTemplates(req)
 	p.Templates.ServeView(res, tpl)

@@ -12,6 +12,7 @@ import (
 //
 // }
 
+// Configuration ...
 type Configuration struct {
 	Secret       string `json:"secret"`
 	PublicPath   string `json:"public_path"`
@@ -20,6 +21,7 @@ type Configuration struct {
 
 }
 
+// Load ...
 func (configuration *Configuration) Load(filename string) (err error) {
 	data, err := ioutil.ReadFile(filename)
 
@@ -32,6 +34,7 @@ func (configuration *Configuration) Load(filename string) (err error) {
 	return
 }
 
+// Parse ....
 func (configuration *Configuration) Parse(data []byte) (err error) {
 	err = json.Unmarshal(data, &configuration)
 

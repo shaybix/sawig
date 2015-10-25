@@ -53,7 +53,7 @@ I call it in this fashion.
 
 ``` go
 
-var ctrl = &controller.Controller{}
+var ctrl = &controller.ControllersInit{}
 
 func main() {
 
@@ -61,8 +61,11 @@ func main() {
     router := httprouter.New()
 
     // The application's routes
-    router.GET("/", ctrl.Index)
+    router.GET("/", ctrl.Pages.Index)
 
 }
 
 ```
+
+
+=========================================================
