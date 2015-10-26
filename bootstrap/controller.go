@@ -1,19 +1,12 @@
 package bootstrap
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
-	"strings"
 )
 
 // TODO: Need to load and parse the template filename, and return an error
-//
-//
-// Please look at PagesController to get a better idea as to what is the
-// desire result.
-//
 
 // Templates ...
 type Templates struct {
@@ -21,45 +14,32 @@ type Templates struct {
 	FilePath string
 }
 
-// LoadTemplates - Loading the templates in the ./Views folder and returning
-// a struct with FileName and FilePath
-func (tpls *Templates) LoadTemplates(req *http.Request) *Templates {
+// LoadTemplate - Loading the templates in the ./Views
+func (tpls *Templates) LoadTemplate(FileName string) *template.Template {
 
-	tpl := new(Templates)
-
-	if req.URL.Path == "/" {
-		tpl.FileName = "index.html"
-	} else {
-
-		tpl.FileName = func() string {
-			path := strings.Join(strings.Split(req.URL.Path, "/")[1:], "-") + ".html"
-			fmt.Println(path)
-			return path
-
-		}()
-	}
-
-	tpl.FilePath = "./views/" + tpl.FileName
-
-	return tpl
-
-}
-
-//ServeView ...
-func (tpls *Templates) ServeView(res http.ResponseWriter, tpl *Templates) {
+	tpls.FileName = FileName
+	tpls.FilePath = "views/" + tpls.FileName
 
 	// Initialise a new template, and parse the files
-	t := template.New(tpl.FileName)
-	template, err := t.ParseFiles(tpl.FilePath)
-
+	t := template.New(tpls.FileName)
+	template, err := t.ParseFiles(tpls.FilePath)
 	// Process any errors
 	if err != nil {
 
 		log.Println(err)
 	}
 
+	return template
+
+}
+
+//ServeView ...
+func (tpls Templates) ServeView(view string, res http.ResponseWriter) {
+
+	tpl := tpls.LoadTemplate(view)
+
 	// Takes as argument a writer and an interfacee of 'data' to be passed
-	err = template.Execute(res, nil)
+	err := tpl.Execute(res, nil)
 
 	// Process any errors
 	if err != nil {

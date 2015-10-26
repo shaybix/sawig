@@ -18,6 +18,7 @@ This application is an excercise allowing me to learn and explore the language c
 - [x] Serve HTML Files in Views folder
 - [x] Load Templates properly
 - [x] Load assets in public folder
+- [ ] Load the routes from a seperate routes.go file
 - [ ] Pass on data to the Templates
 - [ ] Load templates dynamically
 - [ ] Connect to the Database
@@ -28,25 +29,30 @@ This application is an excercise allowing me to learn and explore the language c
 
 ======================================================================
 
-TODO: Currently the views get served from the controller in this fashion. However
-ideally we want to be able to load all of the templates, and their file paths
-into a map of some kind, and using convention map a url path to a template.
+
+
+The controller serving a view has been simplified dramatically.
+
+
 
 ``` go
 
 func (p *Page) Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 
-tpl := p.Templates.LoadTemplates(req)
-p.Templates.ServeView(res, tpl)
+p.ServeView("index.html", w)
 
 }
 
 ```
 
+
+
 After many trial error of writing up my own router, I finally gave up and decided
 to settle with julienschmidt's httprouter, and it works just fine for me now.
 I call it in this fashion.
+
+
 
 
 ``` go
@@ -67,3 +73,23 @@ func main() {
 
 
 =========================================================
+
+
+
+
+##### How to load the templates dynamically?
+
+The templates currently are loaded in the controller inside the bootstrap folder.
+
+Possible ways to load it dynamically:
+
+- [xyz]
+
+
+##### Convenient way to set up the routes
+
+Currently the routes are in the main package loaded in the main function.
+This however would serve to make things more complicated especially when the
+application grows dramatically and you have dozens of routes. Although I don't
+have it entirely figured it out, but having a routes.go file seems more ideal
+at the moment.
