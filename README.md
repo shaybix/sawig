@@ -93,3 +93,10 @@ This however would serve to make things more complicated especially when the
 application grows dramatically and you have dozens of routes. Although I don't
 have it entirely figured it out, but having a routes.go file seems more ideal
 at the moment.
+
+
+
+##### TODDO's
+
+
+....
